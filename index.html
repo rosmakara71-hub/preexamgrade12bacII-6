@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>វិញ្ញាសាគណិតវិទ្យាត្រៀមប្រឡងបាក់ឌុប (វិទ្យាសាស្ត្រពិត) - វិញ្ញាសាទី៦</title>
+    
+    <!-- MathJax សម្រាប់បង្ហាញរូបមន្តគណិតវិទ្យា LaTeX -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&family=Moul&display=swap');
+        
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 20px;
+            color: #0f172a;
+        }
+        .exam-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px double #0f172a;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .kingdom {
+            font-family: 'Moul', sans-serif;
+            font-size: 16px;
+            margin: 0 0 5px 0;
+            color: #1e3a8a;
+        }
+        .exam-title {
+            font-family: 'Moul', sans-serif;
+            font-size: 18px;
+            color: #b91c1c;
+            margin: 20px 0 5px 0;
+            line-height: 1.6;
+        }
+        .author {
+            font-size: 14px;
+            font-weight: bold;
+            color: #475569;
+            margin-top: 5px;
+        }
+        .student-info-box {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            border: 1px solid #e2e8f0;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .input-group label {
+            font-weight: bold;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #334155;
+        }
+        .input-group input {
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: 'Kantumruy Pro', sans-serif;
+            font-size: 14px;
+            outline: none;
+        }
+        .input-group input:focus {
+            border-color: #1e3a8a;
+        }
+        .sticky-bar {
+            position: sticky;
+            top: 10px;
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            z-index: 1000;
+            border-left: 6px solid #b91c1c;
+        }
+        .timer {
+            font-weight: bold;
+            color: #dc2626;
+            font-size: 16px;
+        }
+        .question-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        .question-card:hover {
+            border-color: #b91c1c;
+            box-shadow: 0 4px 12px rgba(185, 28, 28, 0.05);
+        }
+        .question-text {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 18px;
+            color: #0f172a;
+            line-height: 1.8;
+        }
+        .points {
+            font-size: 13px;
+            color: #64748b;
+            font-weight: normal;
+        }
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 10px;
+        }
+        @media (max-width: 650px) {
+            .options-container { grid-template-columns: 1fr; }
+            .student-info-box { grid-template-columns: 1fr; }
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 15px;
+        }
+        .option-label:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+        .option-label input {
+            margin-right: 12px;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+        .solution-box {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f0fdf4;
+            border-left: 4px solid #16a34a;
+            border-radius: 6px;
+            font-size: 14.5px;
+            line-height: 1.7;
+            color: #1e293b;
+        }
+        .solution-title {
+            font-weight: bold;
+            color: #16a34a;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: #b91c1c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Kantumruy Pro', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(185, 28, 28, 0.15);
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background: #991b1b;
+        }
+        .result-box {
+            display: none;
+            background: #fef2f2;
+            border: 2px solid #b91c1c;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .result-title {
+            font-family: 'Moul', sans-serif;
+            color: #b91c1c;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        .correct-flash { background: #d1fae5 !important; border-color: #10b981 !important; }
+        .incorrect-flash { background: #fee2e2 !important; border-color: #ef4444 !important; }
+    </style>
+</head>
+<body>
+
+    <div class="exam-container">
+        <div class="header">
+            <div class="kingdom">ព្រះរាជាណាចក្រកម្ពុជា</div>
+            <div class="kingdom" style="font-size: 13px;">ជាតិ សាសនា ព្រះមហាក្សត្រ</div>
+            <div class="exam-title">វិញ្ញាសាគណិតវិទ្យាជ្រើសរើសពិសេស ត្រៀមប្រឡងសញ្ញាបត្រមធ្យមសិក្សាទុតិយភូមិ<br>(ថ្នាក់វិទ្យាសាស្ត្រពិត - វិញ្ញាសាទី៦)</div>
+            <div class="author">រៀបរៀង និងផ្ទៀងផ្ទាត់ដោយ៖ លោកគ្រូ រស់ មករា</div>
+        </div>
+
+        <div class="student-info-box" id="infoBox">
+            <div class="input-group">
+                <label for="studentName">នាមត្រកូល និងនាមខ្លួនបេក្ខជន *</label>
+                <input type="text" id="studentName" placeholder="ឧទាហរណ៍៖ សុខ និមល" required>
+            </div>
+            <div class="input-group">
+                <label for="studentClass">ថ្នាក់/បន្ទប់សិក្សា *</label>
+                <input type="text" id="studentClass" placeholder="ឧទាហរណ៍៖ ១២ វិទ្យាសាស្ត្រ ២" required>
+            </div>
+        </div>
+
+        <div class="sticky-bar">
+            <div class="timer">ម៉ោងរាប់ថយក្រោយ៖ <span id="timeDisplay">១៥០:០០</span></div>
+            <div style="font-weight: bold; color: #b91c1c;">ពិន្ទុរុបរួម៖ ១២៥</div>
+        </div>
+
+        <div class="result-box" id="resultBox">
+            <div class="result-title">លទ្ធផលប្រឡងផ្លូវការ</div>
+            <p id="studentResultName" style="font-weight: bold; font-size: 16px;"></p>
+            <p style="font-size: 26px; color: #b91c1c; font-weight: bold;">ពិន្ទុទទួលបាន៖ <span id="scoreDisplay">0</span> / ១២៥</p>
+            <p id="timeSpentDisplay" style="font-style: italic; color: #475569;"></p>
+            <p style="color: #16a34a; font-weight: bold; margin-top: 12px;">👇 សូមពិនិត្យវិធីសាស្ត្រដោះស្រាយលម្អិតនៅខាងក្រោមសំនួរនីមួយៗ!</p>
+        </div>
+
+        <form id="quizForm" onsubmit="submitExam(event)">                        
+            <div id="questionsContainer">                
+                
+                <!-- លំហាត់ ១ -->
+                <div class="question-card" data-qindex="1">
+                    <div class="question-text"><span class="q-number"></span> គណនាលីមីត៖ $\lim_{x \to 0} \frac{e^{3x} - 1}{\sin 2x}$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q1" value="W1"> $\frac{2}{3}$</label>
+                        <label class="option-label"><input type="radio" name="q1" value="C" data-correct="true"> $\frac{3}{2}$</label>
+                        <label class="option-label"><input type="radio" name="q1" value="W2"> $1$</label>
+                        <label class="option-label"><input type="radio" name="q1" value="W3"> $0$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        រាងមិនកំណត់ $\frac{0}{0}$។ ប្រើលីមីតគ្រឹះ៖ $\lim_{x \to 0} \frac{e^{ax}-1}{ax} = 1$ និង $\lim_{x \to 0} \frac{\sin bx}{bx} = 1$។<br>
+                        សរសេរ៖ $\lim_{x \to 0} \frac{\frac{e^{3x}-1}{3x} \times 3x}{\frac{\sin 2x}{2x} \times 2x} = \frac{1 \times 3}{1 \times 2} = \frac{3}{2}$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ២ -->
+                <div class="question-card" data-qindex="2">
+                    <div class="question-text"><span class="q-number"></span> គណនាលីមីត៖ $\lim_{x \to +\infty} \left(\frac{x+3}{x+1}\right)^{2x}$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q2" value="W1"> $e^2$</label>
+                        <label class="option-label"><input type="radio" name="q2" value="C" data-correct="true"> $e^4$</label>
+                        <label class="option-label"><input type="radio" name="q2" value="W2"> $e$</label>
+                        <label class="option-label"><input type="radio" name="q2" value="W3"> $1$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        រាងមិនកំណត់ $1^\infty$។ សរសេរកន្សោមខាងក្នុង៖ $\frac{x+3}{x+1} = 1 + \frac{2}{x+1}$។<br>
+                        លីមីតស្មើនឹង៖ $\lim_{x \to +\infty} \left[\left(1 + \frac{2}{x+1}\right)^{\frac{x+1}{2}}\right]^{\frac{2}{x+1} \times 2x} = e^{\lim_{x \to +\infty} \frac{4x}{x+1}} = e^4$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ៣ -->
+                <div class="question-card" data-qindex="3">
+                    <div class="question-text"><span class="q-number"></span> រកដេរីវេនៃអនុគមន៍៖ $f(x) = \ln(x^2 + 4)$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q3" value="W1"> $f'(x) = \frac{1}{x^2+4}$</label>
+                        <label class="option-label"><input type="radio" name="q3" value="C" data-correct="true"> $f'(x) = \frac{2x}{x^2+4}$</label>
+                        <label class="option-label"><input type="radio" name="q3" value="W2"> $f'(x) = \frac{x}{x^2+4}$</label>
+                        <label class="option-label"><input type="radio" name="q3" value="W3"> $f'(x) = 2x\ln(x^2+4)$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        ប្រើរូបមន្តដេរីវេនៃអនុគមន៍បណ្តាក់៖ $(\ln u)' = \frac{u'}{u}$ ដែល $u = x^2 + 4 \implies u' = 2x$។<br>
+                        ដូចនេះ $f'(x) = \frac{2x}{x^2+4}$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ៤ -->
+                <div class="question-card" data-qindex="4">
+                    <div class="question-text"><span class="q-number"></span> រកចំណុចរបត់ (Inflection Point) នៃខ្សែគោង $y = x^3 - 3x^2 + 2$។ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q4" value="W1"> $(0, 2)$</label>
+                        <label class="option-label"><input type="radio" name="q4" value="C" data-correct="true"> $(1, 0)$</label>
+                        <label class="option-label"><input type="radio" name="q4" value="W2"> $(2, -2)$</label>
+                        <label class="option-label"><input type="radio" name="q4" value="W3"> $(1, 2)$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        - ដេរីវេទី១៖ $y' = 3x^2 - 6x$<br>
+                        - ដេរីវេទី២៖ $y'' = 6x - 6$<br>
+                        ឱ្យ $y'' = 0 \implies 6x - 6 = 0 \implies x = 1$។<br>
+                        ជំនួស $x = 1$ ក្នុងសមីការដើម៖ $y(1) = 1^3 - 3(1)^2 + 2 = 0$។ ដូចនេះចំណុចរបត់គឺ $(1, 0)$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ៥ -->
+                <div class="question-card" data-qindex="5">
+                    <div class="question-text"><span class="q-number"></span> រកអាស៊ីមតូតដេកនៃអនុគមន៍៖ $f(x) = \frac{3x^2 - 5}{x^2 + 2x}$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q5" value="W1"> $y = 0$</label>
+                        <label class="option-label"><input type="radio" name="q5" value="C" data-correct="true"> $y = 3$</label>
+                        <label class="option-label"><input type="radio" name="q5" value="W2"> $x = 3$</label>
+                        <label class="option-label"><input type="radio" name="q5" value="W3"> គ្មានអាស៊ីមតូតដេកទេ</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        គណនាលីមីតត្រង់អនន្ត៖ $\lim_{x \to \pm\infty} f(x) = \lim_{x \to \pm\infty} \frac{3x^2}{x^2} = 3$។<br>
+                        ដូចនេះបន្ទាត់ $y = 3$ ជាអាស៊ីមតូតដេកនៃខ្សែគោង។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ៦ -->
+                <div class="question-card" data-qindex="6">
+                    <div class="question-text"><span class="q-number"></span> គណនាអាំងតេក្រាលកំណត់៖ $\int_{0}^{1} \frac{1}{x+1} \,dx$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q6" value="W1"> $1$</label>
+                        <label class="option-label"><input type="radio" name="q6" value="C" data-correct="true"> $\ln 2$</label>
+                        <label class="option-label"><input type="radio" name="q6" value="W2"> $e^2$</label>
+                        <label class="option-label"><input type="radio" name="q6" value="W3"> $\frac{1}{2}$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        ព្រីមីទីវនៃ $\frac{1}{x+1}$ គឺ $\ln|x+1|$។<br>
+                        $\int_{0}^{1} \frac{1}{x+1} dx = \left[ \ln|x+1| \right]_{0}^{1} = \ln 2 - \ln 1 = \ln 2 - 0 = \ln 2$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ៧ -->
+                <div class="question-card" data-qindex="7">
+                    <div class="question-text"><span class="q-number"></span> គណនាផ្ទៃក្រឡាខណ្ឌដោយខ្សែគោង $y = e^x$ អ័ក្សអាប់ស៊ីស $Ox$ និងបន្ទាត់ឈរ $x=0$, $x=1$។ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q7" value="W1"> $e$</label>
+                        <label class="option-label"><input type="radio" name="q7" value="C" data-correct="true"> $e - 1$</label>
+                        <label class="option-label"><input type="radio" name="q7" value="W2"> $e + 1$</label>
+                        <label class="option-label"><input type="radio" name="q7" value="W3"> $1$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        ផ្ទៃក្រឡា $S = \int_{0}^{1} e^x dx = [e^x]_{0}^{1} = e^1 - e^0 = e - 1$ ឯកតាផ្ទៃក្រឡា។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ៨ -->
+                <div class="question-card" data-qindex="8">
+                    <div class="question-text"><span class="q-number"></span> គណនាអាំងតេក្រាលដោយប្រើវិធីប្ដូរអថេរ៖ $\int x \sqrt{x^2 + 1} \,dx$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q8" value="W1"> $\frac{1}{2}(x^2+1)^{\frac{3}{2}} + C$</label>
+                        <label class="option-label"><input type="radio" name="q8" value="C" data-correct="true"> $\frac{1}{3}(x^2+1)^{\frac{3}{2}} + C$</label>
+                        <label class="option-label"><input type="radio" name="q8" value="W2"> $\frac{2}{3}(x^2+1)^{\frac{3}{2}} + C$</label>
+                        <label class="option-label"><input type="radio" name="q8" value="W3"> $\frac{1}{3}x^2(x^2+1)^{\frac{3}{2}} + C$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        តាង $u = x^2 + 1 \implies du = 2x dx \implies x dx = \frac{1}{2} du$។<br>
+                        នាំឱ្យបាន៖ $\int \sqrt{u} \cdot \frac{1}{2} du = \frac{1}{2} \int u^{\frac{1}{2}} du = \frac{1}{2} \times \frac{2}{3} u^{\frac{3}{2}} + C = \frac{1}{3}(x^2+1)^{\frac{3}{2}} + C$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ៩ -->
+                <div class="question-card" data-qindex="9">
+                    <div class="question-text"><span class="q-number"></span> រកចម្លើយទូទៅនៃសមីការឌីផេរ៉ង់ស្យែល៖ $y' + 2y = 4$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q9" value="W1"> $y = Ke^{-2x} - 2$</label>
+                        <label class="option-label"><input type="radio" name="q9" value="C" data-correct="true"> $y = Ke^{-2x} + 2$</label>
+                        <label class="option-label"><input type="radio" name="q9" value="W2"> $y = Ke^{2x} + 2$</label>
+                        <label class="option-label"><input type="radio" name="q9" value="W3"> $y = 2e^{-2x} + K$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        សមីការទម្រង់ $y' + ay = b$ មានចម្លើយទូទៅ៖ $y = Ke^{-an} + \frac{b}{a}$។<br>
+                        ក្នុងលំហាត់នេះ $a = 2, b = 4 \implies \frac{b}{a} = \frac{4}{2} = 2$។ ដូចនេះ $y = Ke^{-2x} + 2$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ១០ -->
+                <div class="question-card" data-qindex="10">
+                    <div class="question-text"><span class="q-number"></span> រកចម្លើយទូទៅនៃសមីការឌីផេរ៉ង់ស្យែល៖ $y'' - 5y' + 6y = 0$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q10" value="W1"> $y = C_1 e^{-2x} + C_2 e^{-3x}$</label>
+                        <label class="option-label"><input type="radio" name="q10" value="C" data-correct="true"> $y = C_1 e^{2x} + C_2 e^{3x}$</label>
+                        <label class="option-label"><input type="radio" name="q10" value="W2"> $y = (C_1x + C_2)e^{2x}$</label>
+                        <label class="option-label"><input type="radio" name="q10" value="W3"> $y = C_1 \cos 2x + C_2 \sin 3x$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        សមីការលក្ខណៈ៖ $r^2 - 5r + 6 = 0 \implies (r-2)(r-3) = 0 \implies r_1 = 2, r_2 = 3$ (ឫសពីរផ្សេងគ្នា)។<br>
+                        កាលណាមានឫសពីរផ្សេងគ្នា ចម្លើយទូទៅគឺ៖ $y = C_1 e^{r_1x} + C_2 e^{r_2x} = C_1 e^{2x} + C_2 e^{3x}$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ១១ -->
+                <div class="question-card" data-qindex="11">
+                    <div class="question-text"><span class="q-number"></span> រកទម្រង់ពិជគណិតនៃចំនួនកុំផ្លិច $z$ ដែលមានម៉ូឌុល $r = 4$ និងអាគុយម៉ង់ $\theta = \frac{5\pi}{6}$។ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q11" value="W1"> $z = 2\sqrt{3} + 2i$</label>
+                        <label class="option-label"><input type="radio" name="q11" value="C" data-correct="true"> $z = -2\sqrt{3} + 2i$</label>
+                        <label class="option-label"><input type="radio" name="q11" value="W2"> $z = -2 + 2i\sqrt{3}$</label>
+                        <label class="option-label"><input type="radio" name="q11" value="W3"> $z = 2\sqrt{3} - 2i$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        តាមរូបមន្ត៖ $z = r(\cos\theta + i\sin\theta) = 4\left(\cos\frac{5\pi}{6} + i\sin\frac{5\pi}{6}\right)$។<br>
+                        ដោយសារ $\cos\frac{5\pi}{6} = -\frac{\sqrt{3}}{2}$ និង $\sin\frac{5\pi}{6} = \frac{1}{2}$។<br>
+                        នាំឱ្យបាន៖ $z = 4\left(-\frac{\sqrt{3}}{2} + i\frac{1}{2}\right) = -2\sqrt{3} + 2i$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ១២ -->
+                <div class="question-card" data-qindex="12">
+                    <div class="question-text"><span class="q-number"></span> គណនាផលចែកចំនួនកុំផ្លិច៖ $z = \frac{1 + 3i}{1 - i}$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q12" value="W1"> $z = 1 + 2i$</label>
+                        <label class="option-label"><input type="radio" name="q12" value="C" data-correct="true"> $z = -1 + 2i$</label>
+                        <label class="option-label"><input type="radio" name="q12" value="W2"> $z = -1 - 2i$</label>
+                        <label class="option-label"><input type="radio" name="q12" value="W3"> $z = 2 + 2i$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        គុណភាគយកនិងភាគបែងនឹងកន្សោមឆ្លាស់របស់ភាគបែង $(1+i)$៖<br>
+                        $z = \frac{(1+3i)(1+i)}{(1-i)(1+i)} = \frac{1 + i + 3i + 3i^2}{1^2 - i^2} = \frac{1 + 4i - 3}{1 + 1} = \frac{-2 + 4i}{2} = -1 + 2i$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ១៣ -->
+                <div class="question-card" data-qindex="13">
+                    <div class="question-text"><span class="q-number"></span> គេបោះគ្រាប់ឡុកឡាក់ពីរគ្រាប់ព្រមគ្នា។ រកប្រូបាបដែលផលបូកគ្រាប់ឡុកឡាក់ទាំងពីរស្មើនឹង ៧។ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q13" value="W1"> $\frac{1}{12}$</label>
+                        <label class="option-label"><input type="radio" name="q13" value="C" data-correct="true"> $\frac{1}{6}$</label>
+                        <label class="option-label"><input type="radio" name="q13" value="W2"> $\frac{5}{36}$</label>
+                        <label class="option-label"><input type="radio" name="q13" value="W3"> $\frac{7}{36}$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        - ចំនួនករណីអាចសរុប៖ $n(S) = 6 \times 6 = 36$។<br>
+                        - ករណីស្របមានផលបូក ៧៖ $A = \{(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)\} \implies n(A) = 6$។<br>
+                        - ប្រូបាប៖ $P(A) = \frac{6}{36} = \frac{1}{6}$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ១៤ -->
+                <div class="question-card" data-qindex="14">
+                    <div class="question-text"><span class="q-number"></span> រកដេរីវេនៃអនុគមន៍៖ $f(x) = \frac{\ln x}{x}$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q14" value="W1"> $f'(x) = \frac{1}{x^2}$</label>
+                        <label class="option-label"><input type="radio" name="q14" value="C" data-correct="true"> $f'(x) = \frac{1 - \ln x}{x^2}$</label>
+                        <label class="option-label"><input type="radio" name="q14" value="W2"> $f'(x) = \frac{\ln x - 1}{x^2}$</label>
+                        <label class="option-label"><input type="radio" name="q14" value="W3"> $f'(x) = \frac{1+\ln x}{x}$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        ប្រើរូបមន្តដេរីវេផលចែក $\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2}$ ដែល $u = \ln x \implies u' = \frac{1}{x}$ និង $v = x \implies v' = 1$។<br>
+                        $f'(x) = \frac{\left(\frac{1}{x}\right)(x) - (\ln x)(1)}{x^2} = \frac{1 - \ln x}{x^2}$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ១៥ -->
+                <div class="question-card" data-qindex="15">
+                    <div class="question-text"><span class="q-number"></span> រកកូអរដោនេនៃចំណុចបរមារបស់ខ្សែគោង $y = x^2 - 4x + 5$។ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q15" value="W1"> $(4, 5)$</label>
+                        <label class="option-label"><input type="radio" name="q15" value="C" data-correct="true"> $(2, 1)$</label>
+                        <label class="option-label"><input type="radio" name="q15" value="W2"> $(-2, 17)$</label>
+                        <label class="option-label"><input type="radio" name="q15" value="W3"> $(2, 5)$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        គណនាដេរីវេ៖ $y' = 2x - 4$។ ឱ្យ $y' = 0 \implies 2x - 4 = 0 \implies x = 2$។<br>
+                        ជំនួស $x = 2$ ទៅក្នុងអនុគមន៍ដើម៖ $y(2) = 2^2 - 4(2) + 5 = 4 - 8 + 5 = 1$។<br>
+                        ដូចនេះចំណុចបរមា (អប្បបរមា) គឺ $(2, 1)$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ១៦ -->
+                <div class="question-card" data-qindex="16">
+                    <div class="question-text"><span class="q-number"></span> គណនាអាំងតេក្រាលកំណត់៖ $\int_{0}^{\pi/2} \cos x \sin^2 x \,dx$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q16" value="W1"> $1$</label>
+                        <label class="option-label"><input type="radio" name="q16" value="C" data-correct="true"> $\frac{1}{3}$</label>
+                        <label class="option-label"><input type="radio" name="q16" value="W2"> $\frac{2}{3}$</label>
+                        <label class="option-label"><input type="radio" name="q16" value="W3"> $0$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        តាង $u = \sin x \implies du = \cos x dx$។<br>
+                        - បើ $x = 0 \implies u = 0$ ៖ បើ $x = \frac{\pi}{2} \implies u = 1$។<br>
+                        $\int_{0}^{1} u^2 du = \left[ \frac{u^3}{3} \right]_{0}^{1} = \frac{1}{3} - 0 = \frac{1}{3}$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ១៧ -->
+                <div class="question-card" data-qindex="17">
+                    <div class="question-text"><span class="q-number"></span> គណនាលីមីត៖ $\lim_{x \to 0} \frac{\sqrt{x+1} - 1}{x}$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q17" value="W1"> $0$</label>
+                        <label class="option-label"><input type="radio" name="q17" value="W2"> $1$</label>
+                        <label class="option-label"><input type="radio" name="q17" value="C" data-correct="true"> $\frac{1}{2}$</label>
+                        <label class="option-label"><input type="radio" name="q17" value="W3"> $+\infty$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        រាងមិនកំណត់ $\frac{0}{0}$។ គុណនឹងកន្សោមឆ្លាស់៖ $\sqrt{x+1} + 1$។<br>
+                        $\lim_{x \to 0} \frac{(\sqrt{x+1}-1)(\sqrt{x+1}+1)}{x(\sqrt{x+1}+1)} = \lim_{x \to 0} \frac{x+1-1}{x(\sqrt{x+1}+1)} = \lim_{x \to 0} \frac{1}{\sqrt{x+1}+1} = \frac{1}{1+1} = \frac{1}{2}$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ១៨ -->
+                <div class="question-card" data-qindex="18">
+                    <div class="question-text"><span class="q-number"></span> រកម៉ូឌុលនៃចំនួនកុំផ្លិច៖ $z = \frac{3 + 4i}{1 - 2i}$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q18" value="W1"> $5$</label>
+                        <label class="option-label"><input type="radio" name="q18" value="C" data-correct="true"> $\sqrt{5}$</label>
+                        <label class="option-label"><input type="radio" name="q18" value="W2"> $\frac{5}{3}$</label>
+                        <label class="option-label"><input type="radio" name="q18" value="W3"> $25$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        ប្រើលក្ខណៈនៃម៉ូឌុល៖ $|z| = \left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}$។<br>
+                        - $|3+4i| = \sqrt{3^2 + 4^2} = \sqrt{25} = 5$។<br>
+                        - $|1-2i| = \sqrt{1^2 + (-2)^2} = \sqrt{1+4} = \sqrt{5}$។<br>
+                        ដូចនេះ $|z| = \frac{5}{\sqrt{5}} = \sqrt{5}$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ១៩ -->
+                <div class="question-card" data-qindex="19">
+                    <div class="question-text"><span class="q-number"></span> រកចម្លើយពិសេសនៃសមីការឌីផេរ៉ង់ស្យែល $y'' + 9y = 0$ ដែលផ្ទៀងផ្ទាត់លក្ខខណ្ឌ $y(0) = 2$ និង $y'(0) = 0$។ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q19" value="W1"> $y = 2\sin 3x$</label>
+                        <label class="option-label"><input type="radio" name="q19" value="C" data-correct="true"> $y = 2\cos 3x$</label>
+                        <label class="option-label"><input type="radio" name="q19" value="W2"> $y = 2e^{3x}$</label>
+                        <label class="option-label"><input type="radio" name="q19" value="W3"> $y = C_1\cos 3x + C_2\sin 3x$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        សមីការមានចម្លើយទូទៅ៖ $y = C_1\cos 3x + C_2\sin 3x$។<br>
+                        - លក្ខខណ្ឌ $y(0) = 2 \implies C_1\cos(0) + C_2\sin(0) = 2 \implies C_1 = 2$។<br>
+                        - ដេរីវេ៖ $y' = -3C_1\sin 3x + 3C_2\cos 3x$។<br>
+                        - លក្ខខណ្ឌ $y'(0) = 0 \implies 3C_2 = 0 \implies C_2 = 0$។<br>
+                        ដូចនេះចម្លើយពិសេសគឺ $y = 2\cos 3x$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ២០ -->
+                <div class="question-card" data-qindex="20">
+                    <div class="question-text"><span class="q-number"></span> **លំហាត់ស្តង់ដារ PISA៖** ល្បឿនរថយន្តមួយដើរតាមសមីការ $v(t) = 2t + 3$ (គិតជា $m/s$)។ គណនាមធ្យមភាគចម្ងាយចរដែលរថយន្តនោះបរបានចាប់ពីវិនាទីទី $t = 0$ ដល់ $t = 4$ វិនាទី។ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q20" value="W1"> $16$ ម៉ែត្រ</label>
+                        <label class="option-label"><input type="radio" name="q20" value="W2"> $20$ ម៉ែត្រ</label>
+                        <label class="option-label"><input type="radio" name="q20" value="C" data-correct="true"> $28$ ម៉ែត្រ</label>
+                        <label class="option-label"><input type="radio" name="q20" value="W3"> $32$ ម៉ែត្រ</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        ចម្ងាយចរគឺជាអាំងតេក្រាលនៃល្បឿន៖ $S = \int_{0}^{4} (2t + 3) dt$。<br>
+                        $S = \left[ t^2 + 3t \right]_{0}^{4} = (4^2 + 3(4)) - 0 = 16 + 12 = 28$ ម៉ែត្រ។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ២១ -->
+                <div class="question-card" data-qindex="21">
+                    <div class="question-text"><span class="q-number"></span> គណនាលីមីត៖ $\lim_{x \to 0} \frac{\ln(1 + 5x)}{x}$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q21" value="W1"> $1$</label>
+                        <label class="option-label"><input type="radio" name="q21" value="C" data-correct="true"> $5$</label>
+                        <label class="option-label"><input type="radio" name="q21" value="W2"> $\frac{1}{5}$</label>
+                        <label class="option-label"><input type="radio" name="q21" value="W3"> $0$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        ប្រើលីមីតគ្រឹះលោការីត៖ $\lim_{u \to 0} \frac{\ln(1+u)}{u} = 1$។<br>
+                        សរសេរ៖ $\lim_{x \to 0} \frac{\ln(1+5x)}{5x} \times 5 = 1 \times 5 = 5$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ២២ -->
+                <div class="question-card" data-qindex="22">
+                    <div class="question-text"><span class="q-number"></span> រកដេរីវេនៃអនុគមន៍ $f(x) = \tan(x^2)$។ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q22" value="W1"> $f'(x) = 2x\sec^2(x)$</label>
+                        <label class="option-label"><input type="radio" name="q22" value="W2"> $f'(x) = \sec^2(x^2)$</label>
+                        <label class="option-label"><input type="radio" name="q22" value="C" data-correct="true"> $f'(x) = 2x(1 + \tan^2(x^2))$</label>
+                        <label class="option-label"><input type="radio" name="q22" value="W3"> $f'(x) = 2x\cdot \cot(x^2)$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        រូបមន្តដេរីវេ៖ $(\tan u)' = u'\cdot(1 + \tan^2 u)$ ដែល $u = x^2 \implies u' = 2x$។<br>
+                        នាំឱ្យបាន៖ $f'(x) = 2x(1 + \tan^2(x^2))$ ឬ $2x\sec^2(x^2)$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ២៣ -->
+                <div class="question-card" data-qindex="23">
+                    <div class="question-text"><span class="q-number"></span> គណនាអាំងតេក្រាលកំណត់៖ $\int_{1}^{e} \frac{\ln x}{x} \,dx$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q23" value="W1"> $1$</label>
+                        <label class="option-label"><input type="radio" name="q23" value="C" data-correct="true"> $\frac{1}{2}$</label>
+                        <label class="option-label"><input type="radio" name="q23" value="W2"> $e$</label>
+                        <label class="option-label"><input type="radio" name="q23" value="W3"> $\frac{e^2-1}{2}$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        ព្រីមីទីវនៃ $\frac{\ln x}{x} = \ln x \cdot (\ln x)'$ គឺ $\frac{1}{2}(\ln x)^2$។<br>
+                        $\int_{1}^{e} \frac{\ln x}{x} dx = \left[ \frac{1}{2}(\ln x)^2 \right]_{1}^{e} = \frac{1}{2}(\ln e)^2 - \frac{1}{2}(\ln 1)^2 = \frac{1}{2}(1) - 0 = \frac{1}{2}$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ២៤ -->
+                <div class="question-card" data-qindex="24">
+                    <div class="question-text"><span class="q-number"></span> បើ $z_1 = 2\left(\cos\frac{\pi}{4} + i\sin\frac{\pi}{4}\right)$ និង $z_2 = 3\left(\cos\frac{\pi}{12} + i\sin\frac{\pi}{12}\right)$ គណនាផលគុណ $z_1 \times z_2$។ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q24" value="W1"> $6\left(\cos\frac{\pi}{48} + i\sin\frac{\pi}{48}\right)$</label>
+                        <label class="option-label"><input type="radio" name="q24" value="C" data-correct="true"> $6\left(\cos\frac{\pi}{3} + i\sin\frac{\pi}{3}\right)$</label>
+                        <label class="option-label"><input type="radio" name="q24" value="W2"> $5\left(\cos\frac{\pi}{3} + i\sin\frac{\pi}{3}\right)$</label>
+                        <label class="option-label"><input type="radio" name="q24" value="W3"> $6\left(\cos\frac{\pi}{6} + i\sin\frac{\pi}{6}\right)$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        តាមក្បួនគុណទម្រង់ត្រីកោណមាត្រ៖ ម៉ូឌុលគុណម៉ូឌុល អាគុយម៉ង់បូកអាគុយម៉ង់។<br>
+                        - $r = r_1 \times r_2 = 2 \times 3 = 6$។<br>
+                        - $\theta = \theta_1 + \theta_2 = \frac{\pi}{4} + \frac{\pi}{12} = \frac{3\pi + \pi}{12} = \frac{4\pi}{12} = \frac{\pi}{3}$។<br>
+                        ដូចនេះ $z_1 \times z_2 = 6\left(\cos\frac{\pi}{3} + i\sin\frac{\pi}{3}\right)$។
+                    </div>
+                </div>
+
+                <!-- លំហាត់ ២៥ -->
+                <div class="question-card" data-qindex="25">
+                    <div class="question-text"><span class="q-number"></span> ក្នុងថ្នាក់រៀនមួយមានសិស្សស្រី ៦០% និងសិស្សប្រុស ៤០%។ ក្នុងចំណោមនោះ មានសិស្សស្រី ២០% និងសិស្សប្រុស ១០% ចូលចិត្តមុខវិជ្ជាគណិតវិទ្យា។ គេជ្រើសរើសសិស្សម្នាក់ដោយចៃដន្យ រកប្រូបាបដែលសិស្សនោះជាអ្នកចូលចិត្តគណិតវិទ្យា។ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="options-container">
+                        <label class="option-label"><input type="radio" name="q25" value="W1"> $0.12$</label>
+                        <label class="option-label"><input type="radio" name="q25" value="W2"> $0.04$</label>
+                        <label class="option-label"><input type="radio" name="q25" value="C" data-correct="true"> $0.16$</label>
+                        <label class="option-label"><input type="radio" name="q25" value="W3"> $0.30$</label>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
+                        ប្រើរូបមន្តប្រូបាបសរុប៖ $P(M) = P(G)\cdot P(M|G) + P(B)\cdot P(M|B)$ ដែល $G$ គឺសិស្សស្រី, $B$ គឺសិស្សប្រុស និង $M$ គឺអ្នកចូលចិត្តគណិត។<br>
+                        $P(M) = (0.60 \times 0.20) + (0.40 \times 0.10) = 0.12 + 0.04 = 0.16$ (ឬ ១៦%)។
+                    </div>
+                </div>
+                
+            </div>
+
+            <button type="submit" class="submit-btn">📥 បញ្ជូនចម្លើយ និងពិនិត្យលទ្ធផលផ្លូវការ</button>
+        </form>
+    </div>
+
+    <script>
+        // មុខងារច្របល់លំដាប់លំហាត់ និងជម្រើស (Fisher-Yates Shuffle)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // ដំណើរការនៅពេលទំព័រ Web ដើរពេញលេញ
+        window.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('questionsContainer');
+            const questions = Array.from(container.getElementsByClassName('question-card'));
+            
+            shuffleArray(questions);
+            
+            questions.forEach((qCard, index) => {
+                const khmerIndex = (index + 1).toString().replace(/\d/g, d => '០១២៣៤៥៦៧៨៩'[d]);
+                qCard.querySelector('.q-number').textContent = `លំហាត់ ${khmerIndex}.`;
+                
+                const optionsContainer = qCard.querySelector('.options-container');
+                const options = Array.from(optionsContainer.getElementsByClassName('option-label'));
+                shuffleArray(options);
+                
+                options.forEach(opt => optionsContainer.appendChild(opt));
+                container.appendChild(qCard);
+            });
+        });
+
+        // គ្រប់គ្រងម៉ោងប្រឡង (១៥០ នាទី)
+        let totalSeconds = 150 * 60;
+        const timeDisplay = document.getElementById('timeDisplay');
+        
+        function updateTimer() {
+            let minutes = Math.floor(totalSeconds / 60);
+            let seconds = totalSeconds % 60;
+            let khmerMinutes = minutes.toString().replace(/\d/g, d => '០១២៣៤៥៦៧៨៩'[d]);
+            let khmerSeconds = seconds.toString().padStart(2, '0').replace(/\d/g, d => '០១២៣៤៥៦៧៨៩'[d]);
+            
+            timeDisplay.textContent = `${khmerMinutes}:${khmerSeconds}`;
+            if(totalSeconds > 0) {
+                totalSeconds--;
+            } else {
+                clearInterval(timerInterval);
+                alert("អស់ពេលកំណត់សម្រាប់ការប្រឡងហើយ!");
+                submitExam(new Event('submit'));
+            }
+        }
+        const timerInterval = setInterval(updateTimer, 1000);
+
+        // មុខងារកែពិន្ទុ និងបង្ហាញលទ្ធផល
+        function submitExam(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('studentName').value;
+            const sClass = document.getElementById('studentClass').value;
+            
+            if(!name || !sClass) {
+                alert("សូមបំពេញឈ្មោះ និងថ្នាក់សិក្សារបស់បេក្ខជនជាមុនសិន!");
+                return;
+            }
+
+            clearInterval(timerInterval);
+            let score = 0;
+            const totalQuestions = 25; 
+            
+            for(let i = 1; i <= totalQuestions; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const qBox = document.querySelector(`.question-card[data-qindex="${i}"]`);
+                
+                if(selected && selected.hasAttribute('data-correct')) {
+                    score += 5;
+                    qBox.classList.add('correct-flash');
+                } else {
+                    qBox.classList.add('incorrect-flash');
+                }
+            }
+
+            document.getElementById('infoBox').style.display = 'none';
+            document.getElementById('resultBox').style.display = 'block';
+            document.getElementById('studentResultName').textContent = `បេក្ខជន៖ ${name} | ថ្នាក់៖ ${sClass}`;
+            document.getElementById('scoreDisplay').textContent = score.toString().replace(/\d/g, d => '០១២៣៤៥៦៧៨៩'[d]);
+            
+            let timeSpent = (150 * 60) - totalSeconds;
+            let spentMin = Math.floor(timeSpent / 60);
+            let spentSec = timeSpent % 60;
+            document.getElementById('timeSpentDisplay').textContent = `រយៈពេលប្រើប្រាស់សរុប៖ ${spentMin} នាទី ${spentSec} វិនាទី`;
+
+            const solutions = document.querySelectorAll('.solution-box');
+            solutions.forEach(box => box.style.display = 'block');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            if (window.MathJax) {
+                window.MathJax.typesetPromise();
+            }
+        }
+    </script>
+</body>
+</html>

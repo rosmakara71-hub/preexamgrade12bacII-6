@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="km">
 <head>
@@ -238,7 +239,7 @@
         </div>
 
         <div class="sticky-bar">
-            <div class="timer">ម៉ោងរាប់ថយក្រោយ៖ <span id="timeDisplay">១៥០:០០</span></div>
+            <div class="timer">ម៉ោងរាប់ថយក្រោយ៖ <span id="timeDisplay">150:00</span></div>
             <div style="font-weight: bold; color: #b91c1c;">ពិន្ទុសរុប៖ ១២៥</div>
         </div>
 
@@ -375,7 +376,7 @@
                         <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
                         បំបែកប្រភាគដោយវិធីចែកពហុធា ឬសរសេរ៖<br>
                         $f(x) = \frac{x^2 + 2x + 1 - 2}{x + 1} = \frac{(x+1)^2 - 2}{x + 1} = x + 1 - \frac{2}{x + 1}$។<br>
-                        By using $\lim_{x \to \pm\infty} \frac{2}{x+1} = 0$ ដូចនេះបន្ទាត់ $y = x + 1$ ជាអាស៊ីមតូតទ្រេត។
+                        ដោយសារ $\lim_{x \to \pm\infty} \frac{2}{x+1} = 0$ ដូចនេះបន្ទាត់ $y = x + 1$ ជាអាស៊ីមតូតទ្រេត។
                     </div>
                 </div>
 
@@ -462,7 +463,7 @@
                     <div class="options-container">
                         <label class="option-label"><input type="radio" name="q14" value="W1"> $y = Ke^{-3x}$</label>
                         <label class="option-label"><input type="radio" name="q14" value="C" data-correct="true"> $y = Ke^{3x}$</label>
-                        <label class="option-label"><input type="radio" name="q14" value="W2"> $y = 3e^{Kx}$</label>
+                        <label class="option-label"><input type="radio" name="q14" value="W2"> $3e^{Kx}$</label>
                         <label class="option-label"><input type="radio" name="q14" value="W3"> $y = e^{3x} + K$</label>
                     </div>
                     <div class="solution-box">
@@ -532,7 +533,7 @@
                         តាង $w = x + iy$ ជាឫសការេនៃ $z \implies (x + iy)^2 = -3 + 4i$<br>
                         យើងបានប្រព័ន្ធសមីការ៖ $\begin{cases} x^2 - y^2 = -3 \\ 2xy = 4 \\ x^2 + y^2 = |-3+4i| = \sqrt{(-3)^2+4^2} = 5 \end{cases}$<br>
                         បូកសមីការទី១ និងទី៣៖ $2x^2 = 2 \implies x^2 = 1 \implies x = \pm 1$។<br>
-                        ដោយសារ $2xy = 4 > 0 \implies x$ និង $y$ មានសញ្ញាដូចគ្នា Black។<br>
+                        ដោយសារ $2xy = 4 > 0 \implies x$ និង $y$ មានសញ្ញាដូចគ្នា។<br>
                         - បើ $x = 1 \implies y = 2 \implies w = 1 + 2i$។<br>
                         - បើ $x = -1 \implies y = -2 \implies w = -1 - 2i$។ ដូចនេះ $w = \pm(1 + 2i)$។
                     </div>
@@ -542,158 +543,118 @@
                     <div class="question-text"><span class="q-number">១៩. </span> រកអាគុយម៉ង់ចម្បងនៃចំនួនកុំផ្លិច៖ $z = -1 - i\sqrt{3}$ <span class="points">(៥ ពិន្ទុ)</span></div>
                     <div class="options-container">
                         <label class="option-label"><input type="radio" name="q19" value="W1"> $\frac{\pi}{3}$</label>
-                        <label class="option-label"><input type="radio" name="q19" value="W2"> $\frac{2}{3}\pi$</label>
-                        <label class="option-label"><input type="radio" name="q19" value="C" data-correct="true"> $\frac{4\pi}{3}$</label>
+                        <label class="option-label"><input type="radio" name="q19" value="W2"> $\frac{2\pi}{3}$</label>
+                        <label class="option-label"><input type="radio" name="q19" value="C" data-correct="true"> $-\frac{2\pi}{3}$</label>
                         <label class="option-label"><input type="radio" name="q19" value="W3"> $-\frac{\pi}{3}$</label>
                     </div>
                     <div class="solution-box">
                         <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
-                        - ម៉ូឌុល៖ $|z| = \sqrt{(-1)^2 + (-\sqrt{3})^2} = \sqrt{1 + 3} = 2$។<br>
-                        - ទម្រង់ត្រីកោណមាត្រ៖ $z = 2\left(-\frac{1}{2} - i\frac{\sqrt{3}}{2}\right)$។<br>
-                        ដោយសារ $\cos\theta = -\frac{1}{2}$ និង $\sin\theta = -\frac{\sqrt{3}}{2}$ (ស្ថិតនៅក្នុងកាដ្រង់ទី៣)។<br>
-                        មុំដែលត្រូវនឹងតម្លៃនេះគឺ $\theta = \pi + \frac{\pi}{3} = \frac{4\pi}{3}$។
+                        ម៉ូឌុល $r = \sqrt{(-1)^2+(-\sqrt{3})^2} = 2$។<br>
+                        នាំឱ្យ $z = 2\left(-\frac{1}{2} - i\frac{\sqrt{3}}{2}\right)$។ ដោយសារ $\cos\theta < 0, \sin\theta < 0$ នោះ $\theta$ ស្ថិតក្នុងកាដ្រង់ទី៣។<br>
+                        អាគុយម៉ង់ចម្បងគឺ $\theta = -\pi + \frac{\pi}{3} = -\frac{2\pi}{3}$។
                     </div>
                 </div>
 
                 <div class="question-card" data-qindex="20">
-                    <div class="question-text"><span class="q-number">២០. </span> ក្នុងប្លង់កុំផ្លិច សំណុំចំណុច $M$ មានកូអរដោនេដែលតំណាងដោយចំនួនកុំផ្លិច $z$ ផ្ទៀងផ្ទាត់សមីការ៖ $|z - 2 + i| = 3$ ជាអ្វី? <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="question-text"><span class="q-number">២០. </span> ក្នុងថង់មួយមានបាល់ក្រហម ៤ និងបាល់ខៀវ ៦។ ចាប់យកបាល់ ២ ព្រមគ្នាដោយចៃដន្យ។ រកប្រូបាបដើម្បីបានបាល់ពណ៌ដូចគ្នា។ <span class="points">(៥ ពិន្ទុ)</span></div>
                     <div class="options-container">
-                        <label class="option-label"><input type="radio" name="q20" value="W1"> បន្ទាត់ត្រង់</label>
-                        <label class="option-label"><input type="radio" name="q20" value="C" data-correct="true"> រង្វង់មានផ្ចិត $I(2, -1)$ និងកាំ $R = 3$</label>
-                        <label class="option-label"><input type="radio" name="q20" value="W2"> រង្វង់មានផ្ចិត $I(-2, 1)$ និងកាំ $R = 3$</label>
-                        <label class="option-label"><input type="radio" name="q20" value="W3"> ប៉ារ៉ាបូល</label>
+                        <label class="option-label"><input type="radio" name="q20" value="W1"> $\frac{2}{15}$</label>
+                        <label class="option-label"><input type="radio" name="q20" value="W2"> $\frac{1}{3}$</label>
+                        <label class="option-label"><input type="radio" name="q20" value="C" data-correct="true"> $\frac{7}{15}$</label>
+                        <label class="option-label"><input type="radio" name="q20" value="W3"> $\frac{8}{15}$</label>
                     </div>
                     <div class="solution-box">
                         <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
-                        សរសេរសមីការឡើងវិញ៖ $|z - (2 - i)| = 3$។<br>
-                        នេះជាទម្រង់សមីការ $|z - z_I| = R$ ដែលតំណាងឱ្យរង្វង់ដែលមានផ្ចិត $I$ និងកាំ $R$។<br>
-                        ដូចនេះ ចំនួនកុំផ្លិច $z_I = 2 - i \implies$ ផ្ចិត $I(2, -1)$ និងកាំ $R = 3$។
+                        - ចំនួនករណីអាច៖ $n(S) = C(10, 2) = \frac{10 \times 9}{2} = 45$។<br>
+                        - ចំនួនករណីស្រប (ក្រហមទាំង២ ឬ ខៀវទាំង២)៖ $n(A) = C(4, 2) + C(6, 2) = 6 + 15 = 21$។<br>
+                        - ប្រូបាប $P(A) = \frac{21}{45} = \frac{7}{15}$។
                     </div>
                 </div>
 
                 <div class="question-card" data-qindex="21">
-                    <div class="question-text"><span class="q-number">២១. </span> គណៈកម្មការមួយមានសមាជិក ៥ នាក់ ត្រូវជ្រើសរើសចេញពីបុរស ៦ នាក់ និងស្ត្រី ៤ នាក់។ រកចំនួនរបៀបក្នុងការជ្រើសរើស ដើម្បីឱ្យគណៈកម្មការនោះមានស្ត្រី ២ នាក់គត់។ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="question-text"><span class="q-number">២១. </span> រកកូអរដោនេនៃចំណុចកំពូលនៃប៉ារ៉ាបូលដែលមានសមីការ៖ $(x-2)^2 = 8(y+1)$ <span class="points">(៥ ពិន្ទុ)</span></div>
                     <div class="options-container">
-                        <label class="option-label"><input type="radio" name="q21" value="W1"> ២៤ របៀប</label>
-                        <label class="option-label"><input type="radio" name="q21" value="C" data-correct="true"> ១២០ របៀប</label>
-                        <label class="option-label"><input type="radio" name="q21" value="W2"> ២១០ របៀប</label>
-                        <label class="option-label"><input type="radio" name="q21" value="W3"> ៧២០ របៀប</label>
+                        <label class="option-label"><input type="radio" name="q21" value="W1"> $(-2, 1)$</label>
+                        <label class="option-label"><input type="radio" name="q21" value="C" data-correct="true"> $(2, -1)$</label>
+                        <label class="option-label"><input type="radio" name="q21" value="W2"> $(2, 1)$</label>
+                        <label class="option-label"><input type="radio" name="q21" value="W3"> $(-2, -1)$</label>
                     </div>
                     <div class="solution-box">
                         <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
-                        ការជ្រើសរើសនេះប្រើ បន្សំ (Combination)៖<br>
-                        - ជ្រើសរើសស្ត្រី ២ នាក់ ពីចំណោម ៤ នាក់៖ $C(4, 2) = \frac{4 \times 3}{2 \times 1} = 6$ របៀប។<br>
-                        - ជ្រើសរើសបុរស ៣ នាក់ (ដើម្បីបង្គ្រប់ ៥នាក់) ពីចំណោម ៦ នាក់៖ $C(6, 3) = \frac{6 \times 5 \times 4}{3 \times 2 \times 1} = 20$ របៀប។<br>
-                        - តាមគោលការណ៍ផលគុណ ចំនួនរបៀបសរុបគឺ៖ $6 \times 20 = 120$ របៀប។
+                        សមីការស្តង់ដាប៉ារ៉ាបូលដែលមានអ័ក្សឈរគឺ៖ $(x-h)^2 = 4p(y-k)$ ដែលមានកំពូល $V(h, k)$។<br>
+                        តាមសមីការយើងបាន $h = 2$ និង $k = -1$។ ដូចនេះកំពូលគឺ $V(2, -1)$។
                     </div>
                 </div>
 
                 <div class="question-card" data-qindex="22">
-                    <div class="question-text"><span class="q-number">២២. </span> គេបោះកាក់មួយដ៏ត្រឹមត្រូវចំនួន ៣ ដងព្រមគ្នា។ រកប្រូបាបដែលទទួលបានមុខរូប (H) យ៉ាងតិចណាស់មួយដង។ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="question-text"><span class="q-number">២២. </span> រកប្រវែងអ័ក្សធំនៃអេលីបដែលមានសមីការ៖ $\frac{x^2}{25} + \frac{y^2}{9} = 1$ <span class="points">(៥ ពិន្ទុ)</span></div>
                     <div class="options-container">
-                        <label class="option-label"><input type="radio" name="q22" value="W1"> $\frac{1}{8}$</label>
-                        <label class="option-label"><input type="radio" name="q22" value="W2"> $\frac{3}{8}$</label>
-                        <label class="option-label"><input type="radio" name="q22" value="C" data-correct="true"> $\frac{7}{8}$</label>
-                        <label class="option-label"><input type="radio" name="q22" value="W3"> $\frac{1}{2}$</label>
+                        <label class="option-label"><input type="radio" name="q22" value="W1"> $5$</label>
+                        <label class="option-label"><input type="radio" name="q22" value="C" data-correct="true"> $10$</label>
+                        <label class="option-label"><input type="radio" name="q22" value="W2"> $6$</label>
+                        <label class="option-label"><input type="radio" name="q22" value="W3"> $8$</label>
                     </div>
                     <div class="solution-box">
                         <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
-                        - ចំនួនករណីអាចសរុប៖ $n(S) = 2^3 = 8$ ករណី។<br>
-                        - ប្រើព្រឹត្តិការណ៍ផ្ទុយ (គ្មានរូបទាល់តែសោះ គឺចេញផ្កា (T) ទាំង៣ដង)៖ មានតែ ១ ករណីគត់គឺ $(T, T, T)$។<br>
-                        - ប្រូបាបនៃព្រឹត្តិការណ៍ផ្ទុយ៖ $P(\bar{A}) = \frac{1}{8}$។<br>
-                        - ដូចនេះ ប្រូបាបទទួលបានមុខរូបយ៉ាងតិចមួយដងគឺ៖ $P(A) = 1 - P(\bar{A}) = 1 - \frac{1}{8} = \frac{7}{8}$។
+                        ទម្រង់ស្តង់ដា $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ ដែល $a^2 = 25 \implies a = 5$។<br>
+                        ប្រវែងអ័ក្សធំគឺ $2a = 2(5) = 10$។
                     </div>
                 </div>
 
                 <div class="question-card" data-qindex="23">
-                    <div class="question-text"><span class="q-number">២៣. </span> រកកូអរដោនេកំណុំ $F$ នៃប៉ារ៉ាបូលដែលមានសមីការស្តង់ដា៖ $(y - 1)^2 = 8(x - 2)$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="question-text"><span class="q-number">២៣. </span> គណនាផលគុណស្កាលែនៃពីរវ៉ិចទ័រ $\vec{u} = (2, -1, 3)$ និង $\vec{v} = (1, 4, 2)$ ក្នុងលំហ។ <span class="points">(៥ ពិន្ទុ)</span></div>
                     <div class="options-container">
-                        <label class="option-label"><input type="radio" name="q23" value="W1"> $F(2, 1)$</label>
-                        <label class="option-label"><input type="radio" name="q23" value="C" data-correct="true"> $F(4, 1)$</label>
-                        <label class="option-label"><input type="radio" name="q23" value="W2"> $F(2, 3)$</label>
-                        <label class="option-label"><input type="radio" name="q23" value="W3"> $F(0, 1)$</label>
+                        <label class="option-label"><input type="radio" name="q23" value="W1"> $2$</label>
+                        <label class="option-label"><input type="radio" name="q23" value="W2"> $3$</label>
+                        <label class="option-label"><input type="radio" name="q23" value="C" data-correct="true"> $4$</label>
+                        <label class="option-label"><input type="radio" name="q23" value="W3"> $5$</label>
                     </div>
                     <div class="solution-box">
                         <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
-                        សមីការមានទម្រង់ស្តង់ដាអ័ក្សឆ្លាស់ដេក៖ $(y - k)^2 = 4p(x - h)$<br>
-                        - នាំឱ្យកំពូលមានកូអរដោនេ៖ $V(h, k) = V(2, 1)$។<br>
-                        - រកប៉ារ៉ាម៉ែត្រ $p$៖ $4p = 8 \implies p = 2$។<br>
-                        - ដោយសារអ័ក្សឆ្លាស់ដេក កំណុំមានរូបមន្ត៖ $F(h + p, k) = F(2 + 2, 1) = F(4, 1)$។
+                        ផលគុណស្កាលែ៖ $\vec{u} \cdot \vec{v} = x_1x_2 + y_1y_2 + z_1z_2$<br>
+                        $\vec{u} \cdot \vec{v} = 2(1) + (-1)(4) + 3(2) = 2 - 4 + 6 = 4$។
                     </div>
                 </div>
 
                 <div class="question-card" data-qindex="24">
-                    <div class="question-text"><span class="q-number">២៤. </span> ក្នុងលំហកូអរដោនេ រកកូអរដោនេចំណុចប្រសព្វរវាងបន្ទាត់ $(L): \begin{cases} x = 1 + t \\ y = -1 + 2t \\ z = 2t \end{cases}$ និងប្លង់ $(P): 2x + y - z - 5 = 0$។ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="question-text"><span class="q-number">២៤. </span> រកសមីការប្លង់ដែលកាត់តាមចំណុច $M_0(1, 2, 3)$ ហើយមានវ៉ិចទ័រណរម៉ាល់ $\vec{n} = (2, -1, 4)$។ <span class="points">(៥ ពិន្ទុ)</span></div>
                     <div class="options-container">
-                        <label class="option-label"><input type="radio" name="q24" value="W1"> $(1, -1, 0)$</label>
-                        <label class="option-label"><input type="radio" name="q24" value="C" data-correct="true"> $(3, 3, 4)$</label>
-                        <label class="option-label"><input type="radio" name="q24" value="W2"> $(2, 1, 2)$</label>
-                        <label class="option-label"><input type="radio" name="q24" value="W3"> $(0, 0, 0)$</label>
+                        <label class="option-label"><input type="radio" name="q24" value="C" data-correct="true"> $2x - y + 4z - 12 = 0$</label>
+                        <label class="option-label"><input type="radio" name="q24" value="W1"> $2x - y + 4z + 12 = 0$</label>
+                        <label class="option-label"><input type="radio" name="q24" value="W2"> $2x + y + 4z - 12 = 0$</label>
+                        <label class="option-label"><input type="radio" name="q24" value="W3"> $x + 2y + 3z - 12 = 0$</label>
                     </div>
                     <div class="solution-box">
                         <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
-                        ជំនួសសមីការប៉ារ៉ាម៉ែត្រនៃបន្ទាត់ $(L)$ ទៅក្នុងសមីការប្លង់ $(P)$ ដើម្បីរកតម្លៃ $t$៖<br>
-                        $2(1 + t) + (-1 + 2t) - (2t) - 5 = 0$<br>
-                        $\implies 2 + 2t - 1 + 2t - 2t - 5 = 0$<br>
-                        $\implies 2t - 4 = 0 \implies t = 2$។<br>
-                        យកតម្លៃ $t = 2$ ទៅជំនួសក្នុងសមីការបន្ទាត់ឡើងវិញដើម្បីរកកូអរដោនេ៖<br>
-                        $x = 1 + 2 = 3$, $y = -1 + 2(2) = 3$, $z = 2(2) = 4$។<br>
-                        ដូចនេះចំណុចប្រសព្វគឺ $(3, 3, 4)$។
+                        សមីការប្លង់៖ $A(x - x_0) + B(y - y_0) + C(z - z_0) = 0$<br>
+                        $2(x - 1) - 1(y - 2) + 4(z - 3) = 0 \implies 2x - 2 - y + 2 + 4z - 12 = 0$<br>
+                        $\implies 2x - y + 4z - 12 = 0$។
                     </div>
                 </div>
 
                 <div class="question-card" data-qindex="25">
-                    <div class="question-text"><span class="q-number">២៥. </span> រកកូអរដោនេផ្ចិត $I$ និងប្រវែងកាំ $R$ នៃស៊្វែរដែលមានសមីការទូទៅ៖ $x^2 + y^2 + z^2 - 2x + 4y - 6z - 2 = 0$ <span class="points">(៥ ពិន្ទុ)</span></div>
+                    <div class="question-text"><span class="q-number">២៥. </span> រកសមីការស៊ែ្វរដែលមានផ្ចិត $I(0, 1, -2)$ និងកាំ $R = 3$។ <span class="points">(៥ ពិន្ទុ)</span></div>
                     <div class="options-container">
-                        <label class="option-label"><input type="radio" name="q25" value="C" data-correct="true"> $I(1, -2, 3), R = 4$</label>
-                        <label class="option-label"><input type="radio" name="q25" value="W1"> $I(-1, 2, -3), R = 4$</label>
-                        <label class="option-label"><input type="radio" name="q25" value="W2"> $I(1, -2, 3), R = 16$</label>
-                        <label class="option-label"><input type="radio" name="q25" value="W3"> $I(2, -4, 6), R = 2$</label>
+                        <label class="option-label"><input type="radio" name="q25" value="W1"> $x^2 + (y-1)^2 + (z+2)^2 = 3$</label>
+                        <label class="option-label"><input type="radio" name="q25" value="C" data-correct="true"> $x^2 + (y-1)^2 + (z+2)^2 = 9$</label>
+                        <label class="option-label"><input type="radio" name="q25" value="W2"> $x^2 + (y+1)^2 + (z-2)^2 = 9$</label>
+                        <label class="option-label"><input type="radio" name="q25" value="W3"> $x^2 + y^2 + z^2 = 9$</label>
                     </div>
                     <div class="solution-box">
                         <div class="solution-title">💡 ដំណោះស្រាយលម្អិត៖</div>
-                        បំលែងសមីការទូទៅទៅជាទម្រង់ស្តង់ដាដោយបង្គ្រប់ការេ៖<br>
-                        $(x^2 - 2x) + (y^2 + 4y) + (z^2 - 6z) = 2$<br>
-                        $\implies (x - 1)^2 - 1 + (y + 2)^2 - 4 + (z - 3)^2 - 9 = 2$<br>
-                        $\implies (x - 1)^2 + (y + 2)^2 + (z - 3)^2 = 2 + 1 + 4 + 9$<br>
-                        $\implies (x - 1)^2 + (y + 2)^2 + (z - 3)^2 = 16 = 4^2$។<br>
-                        នាំឱ្យបាន៖ ផ្ចិត $I(1, -2, 3)$ និងកាំ $R = \sqrt{16} = 4$។
+                        សមីការស្តង់ដាស៊្វែរ៖ $(x-a)^2 + (y-b)^2 + (z-c)^2 = R^2$<br>
+                        $(x-0)^2 + (y-1)^2 + (z+2)^2 = 3^2 \implies x^2 + (y-1)^2 + (z+2)^2 = 9$។
                     </div>
                 </div>
 
             </div>
 
-            <button type="submit" class="submit-btn">បញ្ជូនចម្លើយប្រឡង (Submit Exam)</button>
+            <button type="submit" class="submit-btn">ផ្ញើវិញ្ញាសា និងពិនិត្យលទ្ធផល</button>
         </form>
     </div>
 
     <script>
-        // ១. ប្រព័ន្ធគ្រប់គ្រងម៉ោងរាប់ថយក្រោយ (១៥០ នាទី)
-        let totalSeconds = 150 * 60;
-        const timeDisplay = document.getElementById('timeDisplay');
-        
-        const khmerDigits = ['០','១','២','៣','៤','៥','៦','៧','៨','៩'];
-        function toKhmerNum(num) {
-            return num.toString().split('').map(d => isNaN(d) ? d : khmerDigits[d]).join('');
-        }
-
-        const timerInterval = setInterval(() => {
-            if (totalSeconds <= 0) {
-                clearInterval(timerInterval);
-                timeDisplay.innerText = "អស់ម៉ោងប្រឡង!";
-                alert("អស់ម៉ោងធ្វើកិច្ចការហើយ! ប្រព័ន្ធនឹងបញ្ជូនវិញ្ញាសារបស់អ្នកដោយស្វ័យប្រវត្ត។");
-                document.getElementById('quizForm').requestSubmit();
-            } else {
-                totalSeconds--;
-                let mins = Math.floor(totalSeconds / 60);
-                let secs = totalSeconds % 60;
-                let formattedMins = mins < 10 ? '0' + mins : mins;
-                let formattedSecs = secs < 10 ? '0' + secs : secs;
-                timeDisplay.innerText = toKhmerNum(`${formattedMins}:${formattedSecs}`);
-            }
-        }, 1000);
-
-        // ២. មុខងារច្របល់លំដាប់ (Fisher-Yates Shuffle)
+        // អនុគមន៍ Fisher-Yates សម្រាប់ច្របល់ Array
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -702,86 +663,93 @@
             return array;
         }
 
-        // ៣. ច្របល់សំនួរ និងជម្រើសចម្លើយនៅពេលបើក Page ភ្លាម
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('questionsContainer');
-            const cards = Array.from(container.getElementsByClassName('question-card'));
-
-            shuffleArray(cards);
-
-            cards.forEach((card, index) => {
-                container.appendChild(card);
-                
-                const qNumSpan = card.querySelector('.q-number');
-                if (qNumSpan) {
-                    qNumSpan.textContent = toKhmerNum(index + 1) + '. ';
-                }
-
+        // មុខងារច្របល់សំណួរ និងចម្លើយ ពេលបើកទំព័រ (DOMContentLoaded)
+        window.addEventListener('DOMContentLoaded', () => {
+            const containerQuestions = document.getElementById('questionsContainer');
+            const questions = Array.from(containerQuestions.children);
+            
+            // ១. ច្របល់លំដាប់លំហាត់ (Questions Shuffling)
+            shuffleArray(questions);
+            
+            // ២. ច្របល់ចម្លើយក្នុងលំហាត់នីមួយៗ (Options Shuffling) រួចកែលេខរៀងឡើងវិញ
+            questions.forEach((card, index) => {
+                // ច្របល់ចម្លើយ
                 const optionsContainer = card.querySelector('.options-container');
                 if (optionsContainer) {
-                    const options = Array.from(optionsContainer.getElementsByClassName('option-label'));
-                    shuffleArray(options);
-                    options.forEach(opt => optionsContainer.appendChild(opt));
+                    const labels = Array.from(optionsContainer.children);
+                    shuffleArray(labels);
+                    labels.forEach(label => optionsContainer.appendChild(label));
                 }
+
+                // កែលេខរៀងសំណួរ (១., ២., ៣...) ឱ្យត្រូវតាមលំដាប់ថ្មី
+                const qNumberSpan = card.querySelector('.q-number');
+                if (qNumberSpan) {
+                    qNumberSpan.textContent = `${index + 1}. `;
+                }
+
+                // ដាក់សំណួរដែលបានច្របល់រួចចូលទៅក្នុង Container វិញ
+                containerQuestions.appendChild(card);
             });
         });
 
-        // ៤. មុខងារកែពិន្ទុ និងបង្ហាញដំណោះស្រាយ (កែសម្រួលប្រព័ន្ធការណែនាំថ្មី)
-        function submitExam(e) {
-            e.preventDefault();
-
-            const nameInput = document.getElementById('studentName').value.trim();
-            const classInput = document.getElementById('studentClass').value.trim();
-
-            if (!nameInput || !classInput) {
-                alert("សូមបំពេញឈ្មោះ និងថ្នាក់សិក្សារបស់អ្នកជាមុនសិន!");
-                return;
-            }
-
-            const cards = document.querySelectorAll('.question-card');
+        // ៣. មុខងារម៉ោងរាប់ថយក្រោយ (១៥០ នាទី)
+        let totalSeconds = 150 * 60;
+        const timeDisplay = document.getElementById('timeDisplay');
+        
+        const timerInterval = setInterval(() => {
+            let minutes = Math.floor(totalSeconds / 60);
+            let seconds = totalSeconds % 60;
             
-            // ពិនិត្យរកមើលសំនួរដែលមិនទាន់បានឆ្លើយ
-            let unansweredCount = 0;
-            cards.forEach(card => {
-                const checkedRadio = card.querySelector('input[type="radio"]:checked');
-                if (!checkedRadio) {
-                    unansweredCount++;
-                }
-            });
+            timeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            
+            if (totalSeconds <= 0) {
+                clearInterval(timerInterval);
+                alert("អស់ម៉ោងធ្វើការហើយ! ប្រព័ន្ធនឹងហៅលទ្ធផលស្វ័យប្រវត្តិ។");
+                document.getElementById('quizForm').requestSubmit();
+            }
+            totalSeconds--;
+        }, 1000);
 
-            if (unansweredCount > 0) {
-                alert("សូមឆ្លើយសំណួរឱ្យបានគ្រប់គ្រាន់ទាំងអស់មុននឹងបញ្ជូនចម្លើយ! (នៅសល់ " + toKhmerNum(unansweredCount) + " សំណួរទៀត)");
+        // ៤. មុខងារពិនិត្យពិន្ទុពេលសិស្សចុច Submit
+        function submitExam(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('studentName').value;
+            const sClass = document.getElementById('studentClass').value;
+            
+            if(!name || !sClass) {
+                alert("សូមបំពេញឈ្មោះ និងថ្នាក់សិក្សារបស់អ្នក!");
                 return;
             }
 
-            clearInterval(timerInterval);
-            let finalScore = 0;
+            let score = 0;
+            const totalQuestions = 25;
+            const pointsPerQuestion = 5;
 
-            // គណនាពិន្ទុដោយរត់ត្រួតពិនិត្យផ្ទាល់លើ Card នីមួយៗ (ធានាសុវត្ថិភាពទោះបីជា Shuffle)
-            cards.forEach(card => {
-                const radios = card.querySelectorAll('input[type="radio"]');
-                radios.forEach(radio => {
-                    radio.disabled = true; // បិទមិនឱ្យចុចផ្លាស់ប្តូរក្រោយបញ្ជូន
-                });
-
-                const selectedRadio = card.querySelector('input[type="radio"]:checked');
-                if (selectedRadio && selectedRadio.dataset.correct === "true") {
-                    finalScore += 5;
+            // គណនាពិន្ទុដោយស្វែងរកតាម data-qindex ដើមរបស់សំណួរនីមួយៗ
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedOption && selectedOption.getAttribute('data-correct') === 'true') {
+                    score += pointsPerQuestion;
                 }
+            }
 
-                const solBox = card.querySelector('.solution-box');
-                if (solBox) solBox.style.display = 'block';
-            });
+            // បង្ហាញប្រអប់លទ្ធផលខាងលើ
+            document.getElementById('studentResultName').textContent = `បេក្ខជន៖ ${name} | ថ្នាក់/បន្ទប់៖ ${sClass}`;
+            document.getElementById('scoreDisplay').textContent = score;
+            document.getElementById('resultBox').style.display = 'block';
+            
+            // បង្ហាញគន្លឹះដោះស្រាយគ្រប់សំណួរទាំងអស់
+            const solutionBoxes = document.querySelectorAll('.solution-box');
+            solutionBoxes.forEach(box => box.style.display = 'block');
 
-            document.getElementById('infoBox').style.display = 'none';
-            const resultBox = document.getElementById('resultBox');
-            resultBox.style.display = 'block';
-            document.getElementById('studentResultName').innerText = `បេក្ខជន៖ ${nameInput} មកពីថ្នាក់/បន្ទប់៖ ${classInput}`;
-            document.getElementById('scoreDisplay').innerText = toKhmerNum(finalScore);
-
-            document.querySelector('.submit-btn').style.display = 'none';
-
+            // រំកិល View ទៅលើគេដើម្បីមើលពិន្ទុ
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // បិទការចុចរើសម្តងទៀត
+            const allInputs = document.querySelectorAll('input[type="radio"]');
+            allInputs.forEach(input => input.disabled = true);
+            clearInterval(timerInterval);
         }
     </script>
 </body>
